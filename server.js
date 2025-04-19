@@ -1,20 +1,23 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
 const app = express();
 const PORT = 3030;
 
-// Liste des proxies
-const proxies = [
-  "38.153.152.244:9594:doodscsw:1j6h9o9j4r51",
-  "86.38.234.176:6630:doodscsw:1j6h9o9j4r51",
-  "173.211.0.148:6641:doodscsw:1j6h9o9j4r51",
-  "161.123.152.115:6360:doodscsw:1j6h9o9j4r51",
-  "216.10.27.159:6837:doodscsw:1j6h9o9j4r51",
-  "154.36.110.199:6853:doodscsw:1j6h9o9j4r51",
-  "45.151.162.198:6600:doodscsw:1j6h9o9j4r51",
-  "185.199.229.156:7492:doodscsw:1j6h9o9j4r51",
-  "185.199.228.220:7300:doodscsw:1j6h9o9j4r51",
-  "185.199.231.45:8382:doodscsw:1j6h9o9j4r51"
-];
+// Lire le fichier listProxy.txt
+const proxyFilePath = path.join(__dirname, 'proxy', 'listProxy.txt');
+let proxies = [];
+
+try {
+  const data = fs.readFileSync(proxyFilePath, 'utf-8');
+  proxies = data
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0);
+} catch (err) {
+  console.error('Erreur de lecture du fichier des proxies :', err.message);
+}
 
 // Fonction pour récupérer un proxy aléatoire
 function getRandomProxy() {
