@@ -4,7 +4,6 @@
   "description": "Cette API retourne un proxy rotatif aléatoire au format ip:port:user:password à chaque requête",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon server.js",
     "buld": "node server.js"
   },
