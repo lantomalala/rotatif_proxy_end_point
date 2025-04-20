@@ -1,0 +1,10 @@
+136.0.167.192:7195:fhtoborj:9x7zgtpbroiw
+166.0.34.61:7070:fhtoborj:9x7zgtpbroiw
+136.0.169.171:6674:fhtoborj:9x7zgtpbroiw
+45.39.135.63:7717:fhtoborj:9x7zgtpbroiw
+104.253.248.76:5855:fhtoborj:9x7zgtpbroiw
+166.0.37.183:5692:fhtoborj:9x7zgtpbroiw
+150.241.118.11:6013:fhtoborj:9x7zgtpbroiw
+23.27.67.171:6673:fhtoborj:9x7zgtpbroiw
+136.0.169.203:6706:fhtoborj:9x7zgtpbroiw
+150.241.111.121:6625:fhtoborj:9x7zgtpbroiw
