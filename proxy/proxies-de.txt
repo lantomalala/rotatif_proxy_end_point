@@ -1,0 +1,10 @@
+150.241.111.74:6578:fhtoborj:9x7zgtpbroiw
+45.39.157.16:9048:fhtoborj:9x7zgtpbroiw
+45.39.157.105:9137:fhtoborj:9x7zgtpbroiw
+136.0.167.160:7163:fhtoborj:9x7zgtpbroiw
+104.253.199.111:5390:fhtoborj:9x7zgtpbroiw
+45.39.157.236:9268:fhtoborj:9x7zgtpbroiw
+104.253.248.52:5831:fhtoborj:9x7zgtpbroiw
+150.241.117.32:5536:fhtoborj:9x7zgtpbroiw
+104.253.199.66:5345:fhtoborj:9x7zgtpbroiw
+45.39.157.239:9271:fhtoborj:9x7zgtpbroiw

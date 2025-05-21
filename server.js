@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { get_proxy } = require('./service/refresh_proxy');
+const cron = require('node-cron'); // ✅ import cron
 
 const app = express();
 const PORT = 3030;
@@ -30,14 +32,13 @@ const proxyDir = path.join(__dirname, 'proxy');
 
 // Chargement des fichiers de proxies
 const proxyLists = {
-  all: readProxiesFromFile(path.join(proxyDir, 'listProxy_all.txt')),
-  de: readProxiesFromFile(path.join(proxyDir, 'listProxy_de.txt')),
-  fr: readProxiesFromFile(path.join(proxyDir, 'listProxy_fr.txt')),
-  gb: readProxiesFromFile(path.join(proxyDir, 'listProxy_gb.txt')),
-  gratuit: readProxiesFromFile(path.join(proxyDir, 'listProxy_gratuit.txt')),
-  it: readProxiesFromFile(path.join(proxyDir, 'listProxy_it.txt')),
-  sg: readProxiesFromFile(path.join(proxyDir, 'listProxy_sg.txt')),
-  us: readProxiesFromFile(path.join(proxyDir, 'listProxy_us.txt')),
+  all: readProxiesFromFile(path.join(proxyDir, 'proxies-all.txt')),
+  de: readProxiesFromFile(path.join(proxyDir, 'proxies-de.txt')),
+  fr: readProxiesFromFile(path.join(proxyDir, 'proxies-fr.txt')),
+  gb: readProxiesFromFile(path.join(proxyDir, 'proxies-gb.txt')),
+  it: readProxiesFromFile(path.join(proxyDir, 'proxies-it.txt')),
+  sg: readProxiesFromFile(path.join(proxyDir, 'proxies-sg.txt')),
+  us: readProxiesFromFile(path.join(proxyDir, 'proxies-us.txt')),
 };
 
 
@@ -63,6 +64,20 @@ app.get('/proxy/:country', (req, res) => {
 
   res.json({ proxy });
 });
+
+app.get('/refresh', (req, res) => {
+  const countries = ['-', 'de', 'fr', 'gb', 'it', 'sg', 'us'];
+  countries.forEach(code => get_proxy(code));
+  res.json({ message: '✅ Rafraîchissement lancé pour tous les pays' });
+});
+
+// ✅ Tâche CRON auto tous les 20 du mois à 00:00 metre à jour les proxy.
+cron.schedule('0 0 20 * *', () => {
+  const countries = ['-', 'de', 'fr', 'gb', 'it', 'sg', 'us'];
+  console.log('🕐 CRON: Rafraîchissement automatique des proxys (20 du mois)');
+  countries.forEach(code => get_proxy(code));
+});
+
 
 // Lancer le serveur
 app.listen(PORT, () => {
