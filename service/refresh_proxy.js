@@ -7,7 +7,8 @@ function get_proxy(country = "-") {
     const fileLabel = (country === "-") ? 'all' : country;
     const folderPath = path.join(__dirname, '../proxy');
     const filePath = path.join(folderPath, `proxies-${fileLabel}.txt`);
-    const URL = `https://proxy.webshare.io/api/v2/proxy/list/download/dqrnyrsszxclxvzpngdfabbpsioyvdpdypfuumwm/${finalCountry}/any/username/direct/-/`;
+    
+    const URL = `https://proxy.webshare.io/api/v2/proxy/list/download/dqrnyrsszxclxvzpngdfabbpsioyvdpdypfuumwm/${finalCountry}/any/username/direct/-/?plan_id=11653865`;
 
     // ✅ Crée le dossier s’il n’existe pas
     if (!fs.existsSync(folderPath)) {
