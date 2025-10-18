@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3030;
 
 // 🔒 Middleware de blocage IP et domaine
-const bannedIps = ['172.82.67.102'];
+const bannedIps = ['172.82.67.102', '45.41.160.127'];
 const bannedDomain = 'www.gunbroker.com';
 
 app.use((req, res, next) => {
